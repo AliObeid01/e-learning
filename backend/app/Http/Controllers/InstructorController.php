@@ -25,7 +25,7 @@ class InstructorController extends Controller
 
     public function getInstructorCourses(){
         $data=[];
-        $instructor = Instructor::find('63448be9ea3af1e98e0247d7');//
+        $instructor = Instructor::find('63448c84ea3af1e98e0247db');//
         $data[]=$instructor->course()->get()->pluck('name');
         $students_id=$instructor->course()->get()->pluck('student_id');
         foreach($students_id as $student){
@@ -34,5 +34,6 @@ class InstructorController extends Controller
 
         return $data;
       }
+
 
 }
