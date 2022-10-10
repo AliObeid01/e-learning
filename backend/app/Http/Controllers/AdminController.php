@@ -73,5 +73,12 @@ class AdminController extends Controller
   
       }
 
+      public function getStudents(){
+        
+        $students= Student::all('name','email');
 
+        return $students;
+
+      }
+  
 }
