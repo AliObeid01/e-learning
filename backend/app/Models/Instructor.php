@@ -19,4 +19,9 @@ class Instructor extends Model
         'type',
         
     ];
+    
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
 }
