@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Admin extends Model
+class Student extends Model
 {
     use HasFactory;
 
     protected $connection = 'mongodb';
-    protected $collection = 'admins';
+    protected $collection = 'students';
 
     protected $fillable = [
         'name',
