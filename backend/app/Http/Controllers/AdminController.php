@@ -67,6 +67,18 @@ class AdminController extends Controller
   
       }
 
+      public function addCourse(Request $request){
 
+        $course= new Course();
+  
+        $course->name=$request->name;
+        $course->instructor=$this->getInstructors();
+        $course->save();
+  
+      return response()->json([
+          'data' => $course
+      ], 201);
+  
+      }
    
 }
