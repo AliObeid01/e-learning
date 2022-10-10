@@ -12,5 +12,6 @@ Route::group(["prefix"=> "v1"], function(){
     Route::get('/instructors', [AdminController::class, 'getInstructors']);
     Route::post('/add_course', [AdminController::class, 'addCourse']);
     Route::get('/instructor_courses', [AdminController::class, 'getInstructorCourses']);
+    Route::get('/students', [AdminController::class, 'getStudents']);
    
 });
