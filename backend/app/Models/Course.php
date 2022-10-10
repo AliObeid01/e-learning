@@ -15,21 +15,6 @@ class Course extends Model
 
     protected $fillable = [
         'name',
-        'instructor_id',
     ];
 
-    public function instructor()
-    {
-        return $this->belongsto(Instructor::class);
-    }
-
-    public function studentEnroll()
-    {
-        return $this->belongsToMany(Student::class, 'enrollments', 'course_id', 'student_id');
-    }
-
-    public function assignments()
-    {
-        return $this->hasMany(Assignments::class);
-    }
 }
