@@ -22,7 +22,25 @@ class AddController extends Controller
           'data' => $admin
       ], 201);
   
-      
+
       }
+
+      public function addInstructor(Request $request){
+
+        $instructor= new Instructor();
+  
+        $instructor->name=$request->name;
+        $instructor->email=$request->email;
+        $instructor->password= bcrypt($request->password);
+        $instructor->save();
+  
+      return response()->json([
+          'data' => $instructor
+      ], 201);
+  
+
+      }
+
+
    
 }
