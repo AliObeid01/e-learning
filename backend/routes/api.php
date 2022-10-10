@@ -2,12 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AddController;
+use App\Http\Controllers\AdminController;
 
 Route::group(["prefix"=> "v1"], function(){
 
-    Route::post('/add_admin', [AddController::class, 'addAdmin']);
-    Route::post('/add_instructor', [AddController::class, 'addInstructor']);
-    Route::post('/add_student', [AddController::class, 'addStudent']);
+    Route::post('/add_admin', [AdminController::class, 'addAdmin']);
+    Route::post('/add_instructor', [AdminController::class, 'addInstructor']);
+    Route::post('/add_student', [AdminController::class, 'addStudent']);
+    Route::get('/instructors', [AdminController::class, 'getInstructors']);
+    
    
 });
