@@ -22,9 +22,7 @@ class AdminController extends Controller
         $admin->type="admin";
         $admin->save();
   
-      return response()->json([
-          'data' => $admin
-      ], 201);
+        return $admin;
   
       }
 
@@ -38,9 +36,7 @@ class AdminController extends Controller
         $instructor->type="instructor";
         $instructor->save();
   
-      return response()->json([
-          'data' => $instructor
-      ], 201);
+        return $instructor;
   
       }
 
@@ -54,31 +50,28 @@ class AdminController extends Controller
         $student->type="student";
         $student->save();
   
-      return response()->json([
-          'data' => $student
-      ], 201);
+        return $student;
   
       }
 
       public function getInstructors(){
 
-        $instructors= Instructor::all('name');
+        $instructors= Instructor::all('name','email');
+
         return $instructors;
   
       }
 
       public function addCourse(Request $request){
 
-        $course= new Course();
-  
-        $course->name=$request->name;
-        $course->instructor=$this->getInstructors();
-        $course->save();
-  
-      return response()->json([
-          'data' => $course
-      ], 201);
+        $instructor = Instructor::find($id);
+        $course = $instructor->course()->save(
+           new Course(['name' => $request->name])
+        );
+        
+        return $course;
   
       }
-   
+
+
 }
