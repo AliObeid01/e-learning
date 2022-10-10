@@ -22,6 +22,6 @@ class Instructor extends Model
     
     public function course()
     {
-        return $this->hasMany(Course::class);
+        return $this->embedsMany(Course::class);
     }
 }
