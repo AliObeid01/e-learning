@@ -20,8 +20,9 @@ class Student extends Model
         
     ];
 
-    public function enrollments()
+    public function enrollCourse()
     {
         return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_id');
     }
+
 }
