@@ -18,12 +18,7 @@ class Assignments extends Model
 
         
     ];
-
-    public function enrollCourse()
-    {
-        return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_id');
-    }
-
+    
     public function course()
     {
         return $this->belongsto(Course::class);
