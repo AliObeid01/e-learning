@@ -22,7 +22,10 @@ class AdminController extends Controller
         $admin->type="admin";
         $admin->save();
   
-        return $admin;
+        return response()->json([
+          "status" => "Success",
+          "message" => "Admin has been added"
+        ]);
   
       }
 
@@ -36,7 +39,10 @@ class AdminController extends Controller
         $instructor->type="instructor";
         $instructor->save();
   
-        return $instructor;
+        return response()->json([
+          "status" => "Success",
+          "message" => "Instructor has been added"
+        ]);
   
       }
 
@@ -50,25 +56,43 @@ class AdminController extends Controller
         $student->type="student";
         $student->save();
   
-        return $student;
+        return response()->json([
+          "status" => "Success",
+          "message" => "Student has been added"
+        ]);
+  
+      }
+
+      public function addCourse(Request $request){
+        $instructor = Instructor::find($request->id);
+        $course = $instructor->course()->save(
+          new Course(['name' => $request->name])
+      );
+        
+          return response()->json([
+            "status" => "Success",
+            "message" => "Course has been added"
+          ]);
   
       }
 
       public function getInstructors(){
 
-        $instructors= Instructor::all();
-        return $instructors;
-  
-      }
+        $instructors= Instructor::all('name','email');
+        return response()->json([
+         "status" => "Success",
+         "data" => $instructors
+       ]);
+ 
+     }
 
-      public function addCourse(Request $request){
+      public function getInstructorsCourses(){
 
-        $instructor = Instructor::find('63448be9ea3af1e98e0247d7');//
-        $course = $instructor->course()->save(
-           new Course(['name' => $request->name])
-        );
-        
-        return $course;
+         $instructors= Instructor::all('name','email','course.name','course._id');
+         return response()->json([
+          "status" => "Success",
+          "data" => $instructors
+        ]);
   
       }
 
@@ -76,13 +100,6 @@ class AdminController extends Controller
         
         $students= Student::all();
         return $students;
-
-      }
-      
-      public function getCourses(){
-
-        $course= Course::all();
-        return $course;
 
       }
   
