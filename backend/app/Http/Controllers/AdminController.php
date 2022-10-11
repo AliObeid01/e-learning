@@ -85,6 +85,12 @@ class AdminController extends Controller
         return $course;
 
       }
+      
+      public function getInstructorCourses(){
+        
+        $instructor = Instructor::find('63448be9ea3af1e98e0247d7');
+        return $instructor->course()->get();
 
+      }
   
 }
