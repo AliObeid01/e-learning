@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InstructorController;
 
 Route::group(["prefix"=> "v1"], function(){
 
@@ -14,5 +15,6 @@ Route::group(["prefix"=> "v1"], function(){
     Route::get('/instructor_courses', [AdminController::class, 'getInstructorCourses']);
     Route::get('/students', [AdminController::class, 'getStudents']);
     Route::get('/courses', [AdminController::class, 'getCourses']);
+    Route::post('/enroll_student', [InstructorController::class, 'enrollStudent']);
    
 });
