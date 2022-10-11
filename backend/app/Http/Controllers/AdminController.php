@@ -57,14 +57,13 @@ class AdminController extends Controller
       public function getInstructors(){
 
         $instructors= Instructor::all('name','email');
-
         return $instructors;
   
       }
 
       public function addCourse(Request $request){
 
-        $instructor = Instructor::find($id);
+        $instructor = Instructor::find('6344b517ea3af1e98e0247e2');
         $course = $instructor->course()->save(
            new Course(['name' => $request->name])
         );
@@ -76,9 +75,16 @@ class AdminController extends Controller
       public function getStudents(){
         
         $students= Student::all('name','email');
-
         return $students;
 
       }
+      
+      public function getCourses(){
+
+        $course= Course::all();
+        return $course;
+
+      }
+
   
 }
